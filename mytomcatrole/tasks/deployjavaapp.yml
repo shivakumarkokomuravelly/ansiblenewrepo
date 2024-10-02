@@ -1,0 +1,8 @@
+---
+- name: Deploy jenkis as java appliction 
+  get_url:
+    url: http://34.74.113.182:8082/artifactory/golnoderepo/com/wakaleo/gameoflife/gameoflife-web/1.0-SNAPSHOT/gameoflife-web-1.0-20240922.164550-1.war
+    dest: /opt/tomcat/webapps/gameoflife-web-1.0-20240922.164550-1.war
+    url_username: admin
+    url_password: Shiva@jfrog1
+    force_basic_auth: yes

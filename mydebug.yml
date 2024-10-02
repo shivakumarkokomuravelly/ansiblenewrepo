@@ -1,0 +1,24 @@
+---
+- hosts: 10.1.0.5
+  become: yes
+  tasks:
+  - name: i want to execute linux command 
+    command: hostname -f
+    register: myfirsttastresult
+
+
+  - name: display myfirst tast result 
+    debug: 
+       msg: "{{myfirsttastresult}}"
+
+  - name: install git 
+    apt:
+      name: git
+      state: present
+    when: myfirsttastresult.stderr==""
+
+  - name: install tree
+    apt:
+      name: tree
+      state: present 
+    when: myfirsttastresult.stderr !=""
